@@ -27,13 +27,18 @@ function mario() {
   ////////////// DO NOT MODIFY
 
   height = prompt("Enter an integer between 1 and 23.");
-  while(height > 23) {
-    height = prompt("ENTER AN INTEGER BETWEEN 1 AND 23!");
+  if(height !== null) {
+    while(height > 23 || height < 1) {
+      height = prompt("ENTER AN INTEGER BETWEEN 1 AND 23!");
+    }
+  } else {
+    var p = document.getElementById("mario-easy-output");
+    p.innerHTML = "";
   }
-  while(height < 1) {
-    height = prompt("ENTER AN INTEGER BETWEEN 1 AND 23!");
+  height = parseInt(height);
+  for(let i=3; i <= height; i++) {
+
   }
-  var p = document.getElementById("mario-easy-output");
 
 
   ////////////////////////// DO NOT MODIFY
