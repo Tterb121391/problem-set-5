@@ -29,7 +29,8 @@ function mario() {
   height = prompt("Enter an integer between 1 and 23.");
   let integerCheck = false;
   let hashtag = "#";
-  let space = "&nbsp;"
+  let space = "&nbsp;";
+  let lines = "";
   while(integerCheck == false && height !== null) {
     height = +height;
     integerCheck = Number.isInteger(height);
@@ -38,17 +39,21 @@ function mario() {
     integerCheck = false;
     }
   }
-  while(true) {
-    for(let x = 0; x <= height; x++) {
 
-            for(let y = 0; y <= (height - 2 - a); y++) {
+    for(let x = 1; x <= height; x++) {
 
+            for(let y = 0; y <= (height - 1 - x); y++) {
+              lines = lines + space;
             }
 
-            for(let z = 0; y <= (1 + a); z++) {
-
+            for(let z = 0; z <= x; z++) {
+              lines = lines + hashtag;
             }
-    }
+        lines = lines + "<br>";
+      }
+
+    var p = document.getElementById("mario-easy-output");
+    p.innerHTML = "<code>" + lines + "</code>";
 
 
 
@@ -87,7 +92,41 @@ function marioAgain() {
   let height; // DO NOT MODIFY
   ////////////// DO NOT MODIFY
 
-  // WRITE YOUR EXERCISE 2 CODE HERE
+  height = prompt("Enter an integer between 1 and 23.");
+  let integerCheck = false;
+  let hashtag = "#";
+  let spaceBefore = "&nbsp;";
+  let lines = "";
+  while(integerCheck == false && height !== null) {
+    height = +height;
+    integerCheck = Number.isInteger(height);
+    if(height > 23 || height < 1 || integerCheck == false) {
+      height = prompt("ENTER AN INTEGER BETWEEN 1 AND 23!");
+    integerCheck = false;
+    }
+  }
+
+    for(let x = 1; x <= height; x++) {
+
+            for(let y = 0; y <= (height - 1 - x); y++) {
+              lines = lines + spaceBefore;
+            }
+
+            for(let z = 0; z <= x; z++) {
+              lines = lines + hashtag;
+            }
+
+        lines = lines + spaceBefore + spaceBefore;
+
+            for(let w = 0; w <= x; w++) {
+              lines = lines + hashtag;
+            }
+
+        lines = lines + "<br>";
+      }
+
+      var p = document.getElementById("mario-hard-output");
+      p.innerHTML = "<code>" + lines + "</code>";
 
   //////////////////////////////// DO NOT MODIFY
   check('mario-again', height); // DO NOT MODIFY
@@ -216,6 +255,39 @@ function hurricane() {
   let windspeed; // DO NOT MODIFY
   ///////////////// DO NOT MODIFY
 
+windspeed = Number(prompt("Enter a nonegavtive integer."));
+let integerCheck = false;
+while(integerCheck == false && windspeed !== null) {
+  windspeed = +windspeed;
+  integerCheck = Number.isInteger(windspeed);
+  if(windspeed < 0 || integerCheck == false) {
+    windspeed = Number(prompt("ENTER A NONEGATIVE INTEGER!"));
+  }
+}
+
+if(windspeed >= 157) {
+  var p = document.getElementById("hurricane-output");
+  p.innerHTML = "Category 5 Hurricane.";
+} else if(windspeed >= 130) {
+  var p = document.getElementById("hurricane-output");
+  p.innerHTML = "Category 4 Hurricane.";
+} else if(windspeed >= 111) {
+  var p = document.getElementById("hurricane-output");
+  p.innerHTML = "Category 3 Hurricane.";
+} else if(windspeed >= 96) {
+  var p = document.getElementById("hurricane-output");
+  p.innerHTML = "Category 2 Hurricane.";
+} else if(windspeed >= 74) {
+  var p = document.getElementById("hurricane-output");
+  p.innerHTML = "Category 1 Hurricane.";
+} else if(windspeed >= 39) {
+  var p = document.getElementById("hurricane-output");
+  p.innerHTML = "Tropical Storm.";
+} else {
+  var p = document.getElementById("hurricane-output");
+  p.innerHTML = "The skies are calm...";
+}
+
   ///////////////////////////////// DO NOT MODIFY
   check('hurricane', windspeed); // DO NOT MODIFY
   ///////////////////////////////// DO NOT MODIFY
@@ -258,6 +330,14 @@ function gymnastics() {
    *       scores.push(firstScore);   // your variable names for your scores
    *       scores.push(secondScore);  // will likely be different than mine
    */
+   prompt("You will be asked to submit six scores. Thye must all be real numbers between 0.0 and 10.0.");
+   for(let x = 0; x < 6; x++) {
+     let score = prompt("Enter a score between 0.0 and 10.0.");
+     scores.push(score);
+   }
+
+   var p = document.getElementById("gymnastics-output");
+   
 
   /////////////////////////////// DO NOT MODIFY
   check('gymnastics', scores); // DO NOT MODIFY
