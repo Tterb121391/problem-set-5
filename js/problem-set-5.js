@@ -179,7 +179,76 @@ function credit() {
   let card; // DO NOT MODIFY
   //////////// DO NOT MODIFY
 
-  // WRITE YOUR EXERCISE 3 CODE HERE
+  card = prompt("Enter a credit card number.");
+  let cardClone = card;
+  let integerCheck = false;
+  let creditLength = 0;
+  let sum = 0;
+  let digits = [];
+  while(integerCheck == false && cardClone !== null) {
+    cardClone = +cardClone;
+    integerCheck = Number.isInteger(cardClone);
+    creditLength = Math.ceil(Math.log10(cardClone + 1));
+    if(integerCheck == false || creditLength < 13 || creditLength == 14 || creditLength > 16) {
+      cardClone = prompt("ENTER A VALID CREDIT CARD NUMBER!");
+    }
+
+    for(let x = 1; x <= creditLength; x++) {
+      digits.unshift(Math.floor(cardClone % Math.pow(10, x) / Math.pow(10, x - 1)));
+    }
+
+    for(let y = creditLength - 2; y >= 0; y = y -2) {
+      sum = sum + digits[y] * 2;
+    }
+
+    if(creditLength % 2 == 1) {
+      for(let z = 0; z <= creditLength; z = z + 2) {
+        sum = sum + digits[z];
+      }
+    } else {
+      for(let z = 1; z <= creditLength; z = z + 2) {
+        sum = sum + digits[z];
+      }
+    }
+
+    if(sum % 10 != 0) {
+      integerCheck = false;
+      sum = 0;
+      cardClone = prompt("ENTER A VALID CREDIT CARD NUMBER!");
+    }
+  }
+
+  if(cardClone !== null) {
+    var p = document.getElementById("credit-output");
+
+    if(creditLength == 15) {
+      if(digits[0] == 3 && digits[1] == 4) {
+        p.innerHTML = "<img src='images/amex.png' alt='American Express' />";
+      } else if(digits[0] == 3 && digits[1] == 7) {
+        p.innerHTML = "<img src='images/amex.png' alt='American Express' />";
+      }
+    } else if(creditLength == 13) {
+      if(digits[0] == 4) {
+        p.innerHTML = "<img src='images/visa.png' alt='Visa' />";
+      }
+    } else if(creditLength == 16) {
+      if(digits[0] == 5 && digits[1] == 1) {
+        p.innerHTML = "<img src='images/mastercard.png' alt='Mastercard' />";
+      } else if(digits[0] == 5 && digits[1] == 2) {
+        p.innerHTML = "<img src='images/mastercard.png' alt='Mastercard' />";
+      } else if(digits[0] == 5 && digits[1] == 3) {
+        p.innerHTML = "<img src='images/mastercard.png' alt='Mastercard' />";
+      } else if(digits[0] == 5 && digits[1] == 4) {
+        p.innerHTML = "<img src='images/mastercard.png' alt='Mastercard' />";
+      } else if(digits[0] == 5 && digits[1] == 5) {
+        p.innerHTML = "<img src='images/mastercard.png' alt='Mastercard' />";
+      } else if(digits[0] == 4) {
+        p.innerHTML = "<img src='images/visa.png' alt='Visa' />";
+      }
+    } else {
+      p.innerHTML = "<img src='images/invalid.png' alt='invalid' />";
+    }
+  }
 
   /*
    * NOTE: After reading in the card number and storing it in the 'card'
@@ -337,7 +406,7 @@ function gymnastics() {
    }
 
    var p = document.getElementById("gymnastics-output");
-   
+
 
   /////////////////////////////// DO NOT MODIFY
   check('gymnastics', scores); // DO NOT MODIFY
