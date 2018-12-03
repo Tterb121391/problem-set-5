@@ -399,13 +399,28 @@ function gymnastics() {
    *       scores.push(firstScore);   // your variable names for your scores
    *       scores.push(secondScore);  // will likely be different than mine
    */
-   prompt("You will be asked to submit six scores. Thye must all be real numbers between 0.0 and 10.0.");
+   let sum = 0;
+   alert("You will be asked to submit six scores. Thye must all be real numbers between 0.0 and 10.0.");
    for(let x = 0; x < 6; x++) {
      let score = prompt("Enter a score between 0.0 and 10.0.");
+     score = +score;
+     while(score !== null && (score < 0 || score > 10)) {
+         score = prompt("ENTER A SCORE BETWEEN 0.0 AND 10.0!");
+         score = +score;
+     }
      scores.push(score);
    }
 
+   for(let y = 0; y <= 5; y++) {
+     total = total + scores[y];
+   }
+
+   let scoreMin = Math.min(... scores);
+   let scoreMax = Math.max(... scores);
+   let discardSum = total - (scoreMin + scoreMax);
+   let average = discardSum / 4;
    var p = document.getElementById("gymnastics-output");
+   p.innerHTML = "Discarded: " + scoreMin + ", " + scoreMax + "<br>" + "Score: " + average.toFixed(2);
 
 
   /////////////////////////////// DO NOT MODIFY
@@ -453,6 +468,59 @@ function reportCard() {
   let quizzes = 0; //// DO NOT MODIFY
   let homeworks = 0; // DO NOT MODIFY
   ///////////////////// DO NOT MODIFY
+
+  alert("You will be asked to put in test grades, then quiz grades, then homework grades for the marking period. You may enter any number of grades for each category, and type '-1' once you are done with a category.");
+  let testScore = 0;
+  let quizScore = 0;
+  let homeworkScore = 0;
+  while(testScore != -1) {
+    testScore = prompt("Enter a test score between 0.0 and 100.0.");
+    testScore = +testScore;
+    while(testScore != -1 && testScore !== null && (testScore < 0 || testScore > 100)) {
+      testScore = prompt("ENTER A TEST SCORE BETWEEN 0.0 AND 100.0!");
+      testScore = +testScore;
+    }
+
+    if(testScore != -1) {
+      testTotal = testTotal + testScore;
+      tests++;
+    }
+  }
+
+  while(quizScore != -1) {
+    quizScore = prompt("Enter a quiz score between 0.0 and 100.0.");
+    quizScore = +quizScore;
+    while(quizScore != -1 && quizScore !== null && (quizScore < 0 || quizScore > 100)) {
+      quizScore = prompt("ENTER A QUIZ SCORE BETWEEN 0.0 AND 100.0!");
+      quizScore = +quizScore;
+    }
+
+    if(quizScore != -1) {
+      quizTotal = quizTotal + quizScore;
+      quizzes++;
+    }
+  }
+
+  while(homeworkScore != -1) {
+    homeworkScore = prompt("Enter a homework score between 0.0 and 100.0.");
+    homeworkScore = +homeworkScore;
+    while(homeworkScore != -1 && homeworkScore !== null && (homeworkScore < 0 || homeworkScore > 100)) {
+      homeworkScore = prompt("ENTER A HOMEWORK SCORE BETWEEN 0.0 AND 100.0!");
+      homeworkScore = +homeworkScore;
+    }
+
+    if(homeworkScore != -1) {
+      homeworkTotal = homeworkTotal + homeworkScore;
+      homeworks++;
+    }
+  }
+
+  let testAverage = testTotal / tests;
+  let quizAverage = quizTotal / quizzes;
+  let homeworkAverage = homeworkTotal / homeworks;
+  let grade = 0.6 * testAverage + 0.3 * quizAverage + 0.1 * homeworkAverage;
+  var p = document.getElementById("report-card-output");
+  p.innerHTML = "Tests: " + testAverage.toFixed(2) + "<br>" + "Quizzes: " + quizAverage.toFixed(2) + "<br>" + "Homework: " + homeworkAverage.toFixed(2) + "<br>" + "Grade: " + grade.toFixed(2);
 
   /*
    * NOTE: The 'tests', 'quizzes', and 'homeworks' variables should be
