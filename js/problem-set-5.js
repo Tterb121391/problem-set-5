@@ -287,7 +287,41 @@ function credit() {
 
 function guess() {
 
-  // WRITE YOUR EXERCISE 4 CODE HERE
+  prompt("An integer will be randomly generated between 1 and 1000. Try and guess that integer in as few attempts as possible!");
+  let answer = Math.floor(Math.random() * 1000) + 1;
+  answer = +answer
+  let guessedNumber = prompt("Guess an integer between 1 and 1000.");
+  guessedNumber = +guessedNumber;
+  let integerCheck = false;
+  let attempts = 0;
+  while(guessedNumber != answer) {
+    while(integerCheck == false) {
+      integerCheck = Number.isInteger(guessedNumber);
+      if(integerCheck == false || guessedNumber < 0 || guessedNumber > 1000) {
+        guessedNumber = prompt("GUESS AN INTEGER BETWEEN 1 AND 1000!");
+        guessedNumber = +guessedNumber;
+        integerCheck = false;
+      }
+    }
+    if(guessedNumber >= answer - 10 && guessedNumber <= answer) {
+      prompt("Your guess was only a bit too low! Try again.");
+    } else if(guessedNumber <= answer + 10 && guessedNumber >= answer) {
+      guessedNumber = prompt("Your guess was only a bit too high! Try again.");
+    } else if(guessedNumber >= answer - 50 && guessedNumber <= answer) {
+      guessedNumber = prompt("Your guess was somewhat low. Try again.");
+    } else if(guessedNumber <= answer + 10 && guessedNumber >= answer) {
+      guessedNumber = prompt("Your guess was somewhat high. Try again.");
+    } else if(guessedNumber >= answer - 100 && guessedNumber <= answer) {
+      guessedNumber = prompt("Your guess was too low. Try again.");
+    } else if(guessedNumber <= answer + 100 && guessedNumber >= answer) {
+      guessedNumber = prompt("Your guess was to high. Try again.");
+    } else if(guessedNumber <= answer) {
+      guessedNumber = prompt("Your guess was WAY too low! Try again.");
+    } else if(guessedNumber >= answer) {
+      guessedNumber = prompt("Your guess was WAY too high! Try again.");
+    }
+    attempts++;
+  }
 
   ////////////////// DO NOT MODIFY
   check('guess'); // DO NOT MODIFY
