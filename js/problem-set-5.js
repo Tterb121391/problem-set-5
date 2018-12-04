@@ -179,24 +179,25 @@ function credit() {
   let card; // DO NOT MODIFY
   //////////// DO NOT MODIFY
 
-  card = prompt("Enter a credit card number.");
-  let cardClone = card;
-  let integerCheck = false;
+  let integerCheck;
   let creditLength = 0;
   let sum = 0;
   let digits = [];
-  while(integerCheck == false && card !== null) {
-    cardClone = card;
-    cardClone = +cardClone;
-    integerCheck = Number.isInteger(cardClone);
-    creditLength = Math.ceil(Math.log10(cardClone + 1));
-    if(integerCheck == false || creditLength < 13 || creditLength == 14 || creditLength > 16) {
-      card = prompt("ENTER A VALID CREDIT CARD NUMBER!");
+  while(true) {
+    card = prompt("Enter a credit card number.");
+    integerCheck = Number.isInteger(+card);
+    creditLength = Math.ceil(Math.log10(card));
+    if(card === null) {
+      break;
+    }
+    if(integerCheck == true) {
+      break;
     }
   }
-  if(cardClone !== null) {
+  let cardClone = +card;
+  if(card !== null) {
     for(let x = 1; x <= creditLength; x++) {
-      digits.unshift(Math.floor(cardClone % Math.pow(10, x) / Math.pow(10, x - 1)));
+      digits.unshift(Math.floor(card % Math.pow(10, x) / Math.pow(10, x - 1)));
     }
 
     for(let y = creditLength - 2; y >= 0; y = y -2) {
@@ -214,41 +215,42 @@ function credit() {
     }
   }
 
-    if(sum % 10 != 0) {
-      integerCheck = false;
-      sum = 0;
-      cardClone = prompt("ENTER A VALID CREDIT CARD NUMBER!");
-    } else if(cardClone !== null) {
-      let p = document.getElementById("credit-output");
+    let p = document.getElementById("credit-output");
 
+    if(sum % 10 != 0 && card !== null) {
+      p.innerHTML = "<img src='images/invalid.png' />";
+    } else if(card !== null) {
       if(creditLength == 15) {
         if(digits[0] == 3 && digits[1] == 4) {
-          p.innerHTML = "<img src='images/amex.png' alt='American Express' />";
+          p.innerHTML = "<img src='images/amex.png' />";
         } else if(digits[0] == 3 && digits[1] == 7) {
-          p.innerHTML = "<img src='images/amex.png' alt='American Express' />";
+          p.innerHTML = "<img src='images/amex.png' />";
         }
       } else if(creditLength == 13) {
         if(digits[0] == 4) {
-          p.innerHTML = "<img src='images/visa.png' alt='Visa' />";
+          p.innerHTML = "<img src='images/visa.png' />";
         }
       } else if(creditLength == 16) {
         if(digits[0] == 5 && digits[1] == 1) {
-          p.innerHTML = "<img src='images/mastercard.png' alt='Mastercard' />";
+          p.innerHTML = "<img src='images/mastercard.png' />";
         } else if(digits[0] == 5 && digits[1] == 2) {
-          p.innerHTML = "<img src='images/mastercard.png' alt='Mastercard' />";
+          p.innerHTML = "<img src='images/mastercard.png' />";
         } else if(digits[0] == 5 && digits[1] == 3) {
-          p.innerHTML = "<img src='images/mastercard.png' alt='Mastercard' />";
+          p.innerHTML = "<img src='images/mastercard.png' />";
         } else if(digits[0] == 5 && digits[1] == 4) {
-          p.innerHTML = "<img src='images/mastercard.png' alt='Mastercard' />";
+          p.innerHTML = "<img src='images/mastercard.png' />";
         } else if(digits[0] == 5 && digits[1] == 5) {
-          p.innerHTML = "<img src='images/mastercard.png' alt='Mastercard' />";
+          p.innerHTML = "<img src='images/mastercard.png' />";
         } else if(digits[0] == 4) {
-          p.innerHTML = "<img src='images/visa.png' alt='Visa' />";
+          p.innerHTML = "<img src='images/visa.png' />";
+        } else {
+          p.innerHTML = "<img src='images/invalid.png' />"
         }
-      } else {
-        p.innerHTML = "<img src='images/invalid.png' alt='invalid' />";
       }
+    } else {
+      p.innerHTML = "";
     }
+    card = +cardClone;
 
   /*
    * NOTE: After reading in the card number and storing it in the 'card'
