@@ -2,40 +2,40 @@
  * SOLUTION. Mario.
  */
 
-function mario() {
-  let height = -1;
+function mario() {                            //Defines function called "mario()"
+  let height = -1;                            //Defines variable called "height" and assigns it to a value of -1
 
-  while (height < 1 || height > 23) {
-    height = Number(prompt("Height: "));
+  while (height < 1 || height > 23) {         //Sets up a while loop that will start running and continue running as long as "height" is less than 1 or "height" is greater than 23
+    height = Number(prompt("Height: "));      //"height" is assigned to the number value of the user input from a prompt. The prompt will be displayed as "Height: "
 
-    if (height === null) {
-      break;
-    } else if (Number.isNaN(height)) {
-      height = -1;
-    } else if (!Number.isInteger(height)) {
-      height = -1;
+    if (height === null) {                    //Sets up a conditional statement. This part of the conditional statement will run if the type and value of "height" is equal to null.
+      break;                                  //If the condition is satisfied, the function will exit the loop and continue down the code.
+    } else if (Number.isNaN(height)) {        //If the previous condition was not satisfied and "height" is not a number, this part of the contisional statement will run.
+      height = -1;                            //If the condition is satisfied, the variable "height" will be assigned a value of -1.
+    } else if (!Number.isInteger(height)) {   //If the previous conditions were not satisfied and "height" is not an integer, this part of the conditional statement will run.
+      height = -1;                            //If the condition is satisfied, the variable "height" will be assigned a value of -1.
     }
-  }
+  }                                           //At this point, the function will go back to the start of the loop and check if the loop's conditions are met.
 
-  if (height !== null) {
-    let output = "<code>";
-    let space = "&nbsp;";
-    let block = "#";
+  if (height !== null) {                      //Sets up a conditional statement. This part of the conditional statement will run if the type and value of "height" are not equal to null.
+    let output = "<code>";                    //Defines variable called "output" and assigns it a value of "<code>"
+    let space = "&nbsp;";                     //Defines variable called "space" and assigns it a value of "&nbsp"
+    let block = "#";                          //Defines variable called "block" and assigns it a value of "#".
 
-    for (let row = 1; row <= height; row++) {
-      for (let i = 0; i < height - row; i++) {
-        output = output + space;
-      }
-      for (let j = 0; j < row + 1; j++) {
-        output = output + block;
-      }
-      output = output + "<br>";
-    }
-    output = output + "</code>";
+    for (let row = 1; row <= height; row++) {                          //Sets up a for loop that defines a variable called "row" and assigns it a value of 1. The loop will start running and continue running as long as "row" is less than or equal to "height", and "row" will increase by one every time the loop comes back to the start before checking the condition.
+      for (let i = 0; i < height - row; i++) {                         //When the loop runs, it will set up a for loop that defines a variable called "i" and assigns it a value of 0. This loop will start running and continue running as long as "i" is less than or equal to "height" - "row, and "i" will increase by one every time the loop comes back to the start before checking the condition.
+        output = output + space;                                       //When the loop runs, it will assign the variable "output" to itself plus the variable "space"
+      }                                                                //Here, the loop will update and return to the start, checking the condition before running again.
+      for (let j = 0; j < row + 1; j++) {                              //Sets up a for loop that defines a varaible called "j" and assigns its value to 0. The loop will start running and continue running as long as "j" is less than or equal to "row" + 1, and "j" will increase by one every time the loop comes back to start before checking the condition.
+        output = output + block;                                       //When the loop runs, it will assign the varaible "output" to itself plus the variable "block"
+      }                                                                //Here, the loop will update and return to the start, making sure the condition is satisfied before running again.
+      output = output + "<br>";                                        //The variable "output" is assigned to itself plus "<br>"
+    }                                                                  //Here, the loop will update and return to the start, making sure that the condition is satisfied before running again
+    output = output + "</code>";                                       //The variable "output" is assigned to itself plus "</code>"
 
-    document.getElementById("mario-easy-output").innerHTML = output;
-  } else {
-    document.getElementById("mario-easy-output").innerHTML = "";
+    document.getElementById("mario-easy-output").innerHTML = output;   //The function fetches for an HTML element with an ID of "mario-easy-output" and prints the variable "output" into it
+  } else {                                                             //If the condition of the first part of the if statement was not satisfied, then the "else" part of the statement runs
+    document.getElementById("mario-easy-output").innerHTML = "";       //If the "else" part runs, it will fetch for an HTML element with an ID of "mario-easy-output" and print nothing into it.
   }
 
   check("mario", height);
@@ -45,45 +45,45 @@ function mario() {
  * SOLUTION. Mario, Again.
  */
 
-function marioAgain() {
-  let height = -1;
+function marioAgain() {                           //Defines function called "marioAgain()"
+  let height = -1;                                //Defines variable called "height" and assigns it a value of -1
 
-  while (height < 1 || height > 23) {
-    height = Number(prompt("Height: "));
-
-    if (height === null) {
-      break;
-    } else if (Number.isNaN(height)) {
-      height = -1;
-    } else if (!Number.isInteger(height)) {
-      height = -1;
+  while (height < 1 || height > 23) {             //Sets up a while loop that will start running and continue running as long as "height" is less than one or greater than 23
+    height = Number(prompt("Height: "));          //Assigns variable "height" the value of the user input from the prompt that says "Height: ". That user input will be converted into a number
+  
+    if (height === null) {                        //Sets up an if conditional statement. This prt of the conditional statement will run if the data type and value of "height" is equal to null.
+      break;                                      //If the condition is true, the function will exit the while loop and continue down the code
+    } else if (Number.isNaN(height)) {            //If the previous condition was not satisfied, this part of the conditional statement will run if "height" is not a number
+      height = -1;                                //If the condition is true, then "height" will be assigned a value of -1
+    } else if (!Number.isInteger(height)) {       //If the previous conditions were not satisfied, this part of the conditional statement will run if "height" is not an integer
+      height = -1;                                //If the condition is true, then "height" will be assigned a value of -1
     }
-  }
+  }                                               //Here, the loop will update, then loop back and check if its conditions are satisfied before running again
 
-  if (height !== null) {
-    let output = "<code>";
-    let space = "&nbsp;";
-    let block = "#";
+  if (height !== null) {                                                  //Sets up an if conditional statement. This part of the conditional statement will run if the data type or value is not equal to null
+    let output = "<code>";                                                //Defines a variable called "output" and assigns it to the value "<code>"
+    let space = "&nbsp;";                                                 //Defines a variable called "space" and assigns it to the value "&nbsp;"
+    let block = "#";                                                      //Defines a variable called "block" and assigns it to the value "#"
 
-    for (let row = 1; row <= height; row++) {
-      for (let i = 0; i < height - row; i++) {
-        output = output + space;
-      }
-      for (let j = 0; j < row + 1; j++) {
-        output = output + block;
-      }
-      output = output + space + space;
+    for (let row = 1; row <= height; row++) {                             //Sets up a for loop that defines a variable called "row" and assigns it a value of 1. This loop will start to run and continue to run as long as "row" is less than or equal to "height", and "row" will increase by one every time the loop comes back before checking the condition
+      for (let i = 0; i < height - row; i++) {                            //Sets up a for loop that defines a variable called "i" and assigns it to the value 0. The loop will start to run and continue to run as long as "i" is less than "height", and "i" will increase by 1 every time the loop comes back to the start before chekcing the condition
+        output = output + space;                                          //Assigns "output" to the value of itself plus "space"
+      }                                                                   //Here, the loop will update, then loop back to the start and check its condition before running again
+      for (let j = 0; j < row + 1; j++) {                                 //Sets up a for loop that defines a variable called "j" and assigns it to the value 0. The loop will start to run and continue to run as long as "j" is less than or equal to "row" plus 1, and "j" will increase by 1 every time the loop comes back to the start before checking its condition
+        output = output + block;                                          //Assigns "output" to the value of itself plus "block"
+      }                                                                   //Here, the loop will update, then loop back to the start and check its condition before running again
+      output = output + space + space;                                    //Assigns "output" to itself plus "space" plus "space"
 
-      for (let k = 0; k < row + 1; k++) {
-        output = output + block;
-      }
-      output = output + "<br>";
-    }
-    output = output + "</code>";
+      for (let k = 0; k < row + 1; k++) {                                 //Sets up a for loop that defines a variable called "k" and assigns it to the value 0. This loop will start to run and continue to run as long "k" is less than "row" plus 1, and "k" will increase by 1 every time the loop comes back to the start before checking the condition
+        output = output + block;                                          //Assigns "output" to itself plus "block"
+      }                                                                   //Here, the loop will update, then loop back to the start and check its condition before running again
+      output = output + "<br>";                                           //Assigns "output" to itself plus "<br>"
+    }                                                                     //Here, the loop will update, then loop back to the start and check its oncditions before running again
+    output = output + "</code>";                                          //Assigns "output" to itself plus "</code>"
 
-    document.getElementById("mario-hard-output").innerHTML = output;
-  } else {
-    document.getElementById("mario-hard-output").innerHTML = "";
+    document.getElementById("mario-hard-output").innerHTML = output;      //Fetches an HTML element with the ID "mario-hard-output" and prints the variable "output" into the HTML element
+  } else {                                                                //If the previous condition was not satisfied, this part of the conditional statement will run
+    document.getElementById("mario-hard-output").innerHTML = "";          //Fetches an HTML element with the ID "mario-hard-output" and prints nothing into the HTML element
   }
 
   check("mario-again", height);
@@ -93,29 +93,29 @@ function marioAgain() {
  * SOLUTION. Credit.
  */
 
-function credit() {
-  let card = "invalid";
+function credit() {                                   //Defines function called "credit()"
+  let card = "invalid";                               //Defines variable called "card" and assigns it to the value "invalid"
 
-  while (!Number.isInteger(card)) {
-    card = Number(prompt("Card Number: "));
+  while (!Number.isInteger(card)) {                   //Sets up a while loop that starts to run and continues to run as long as "card" is not an integer
+    card = Number(prompt("Card Number: "));           //Assigns "card" to the value of the user input from the prompt that says "Card number: ". The user input will be converted to a number
 
-    if (card === null) {
-      break;
+    if (card === null) {                              //Sets up an if statement. This part of the if statement will run if the data type and value of "card" is equal to null
+      break;                                          //If the condition is true, then the function will exit the while loop and continue down the code
     }
-  }
+  }                                                   //Here, the loop will loop back to the start and check its condition before running again
 
-  let prev;
-  if (card !== null) {
-    let number = card;
-    let sumMultDigits = 0;
-    let sumNonMultDigits = 0;
-    let numDigits = 0;
-    let current = -1;
-    let previous = -1;
-    let multiply = false;
+  let prev;                                           //Defines a variable called "prev"
+  if (card !== null) {                                //Sets up an if statement. This part of the if statement will run if the data type or value of "card" is not equal to null
+    let number = card;                                //Defines a varaible called "number" and assigns it to the value of the variable "card"
+    let sumMultDigits = 0;                            //Defines variable called "sumMultDigits" and assigns it to the value 0
+    let sumNonMultDigits = 0;                         //Defines varaible called "sumNonMultDigits" and assigns it to the value 0
+    let numDigits = 0;                                //Defines variable called "numDigits" and assigns it to the value 0
+    let current = -1;                                 //Defines variable called "current" and assigns it to the value -1
+    let previous = -1;                                //Defines variable called "previous" and assigns it to the value -1
+    let multiply = false;                             //Defines variable called "multiply" and assigns it to the value "false"
 
-    while (number > 0) {
-      digit = number % 10;
+    while (number > 0) {                              //Sets up a while loop that starts to run and continues to run as long as "number" is greater than 0
+      digit = number % 10;                            //
       numDigits++;
 
       let tmp = current;
