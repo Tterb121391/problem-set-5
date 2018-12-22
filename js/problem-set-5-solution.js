@@ -145,56 +145,56 @@ function credit() {                                   //Defines function called 
     if (checksum === 0) {                                                   //Sets up an if statement. This part of the if statement will run if the data type and value of "checkSUm" is equal to 0
       if (current === 4) {                                                  //Sets up an if statement. This part of the if statement will run if the data type and value of "current" is equal to 4
         if (numDigits === 13 || numDigits === 16) {                         //Sets up an if statement. This part of the if statement will run if the data type and value of "sumDigits" is equal to 13 or 16
-          prev = document.getElementById("cc");                             
-          if (prev) {
-            prev.parentNode.removeChild(prev);
+          prev = document.getElementById("cc");                             //If the condition is true, then the variable "prev" is assigned to the HTML element with the ID of "cc"
+          if (prev) {                                                       //Sets up if statement. This part of the if statement will run if prev is truthy
+            prev.parentNode.removeChild(prev);                              //If the condition is true, then the specified HTML element will be removed
           }
 
           let visa = document.createElement("img");                         //Defines variable called "visa" and assigns it to a created <img> HTML element
-          visa.setAttribute("id", "cc");                                    //
-          visa.setAttribute("src", "images/visa.png");
-          visa.setAttribute("width", "25%");
-          document.getElementById("credit-output").innerHTML = "";
-          document.getElementById("credit-output").appendChild(visa);
+          visa.setAttribute("id", "cc");                                    //THe variable "visa" is given an ID of "cc"
+          visa.setAttribute("src", "images/visa.png");                      //The variable "visa" is given an src of "images/visa.png"
+          visa.setAttribute("width", "25%");                                //The variable "visa" is given a width of 25%
+          document.getElementById("credit-output").innerHTML = "";          //The function fetches for an HTML element with the ID "credit-output" and prints nothing into it
+          document.getElementById("credit-output").appendChild(visa);       //The function fetches for an HTML element with the ID "credit-output" and adds the variable "visa" into it
         }
-      } else if (current === 3 && (previous === 4 || previous === 7)) {
-        if (numDigits === 15) {
-          prev = document.getElementById("cc");
-          if (prev) {
-            prev.parentNode.removeChild(prev);
+      } else if (current === 3 && (previous === 4 || previous === 7)) {     //If the previous condition was false, then this part of the if statement will run if the data type and value of "current" are equal to 3 and the data type and value of "previous" are equal to 4 or 7
+        if (numDigits === 15) {                                             //Sets up an if statement. This part of the if statement will run if the data type and value of "numDigits" are equal to 15
+          prev = document.getElementById("cc");                             //If the condition is true, then the variable "prev" is assigned to the HTML element with the ID of "cc"
+          if (prev) {                                                       //Sets up an if statement. This part of the if statement will run if "prev" is truthy
+            prev.parentNode.removeChild(prev);                              //If the condition is true, then the specified HTML element will be removed
           }
 
-          let amex = document.createElement("img");
-          amex.setAttribute("id", "cc");
-          amex.setAttribute("src", "images/amex.png");
-          amex.setAttribute("width", "25%");
-          document.getElementById("credit-output").innerHTML = "";
-          document.getElementById("credit-output").appendChild(amex);
+          let amex = document.createElement("img");                         //Defines variable called "amex" and assigns it to the created <img> HTML element
+          amex.setAttribute("id", "cc");                                    //The variable "amex" is given an ID of "cc"
+          amex.setAttribute("src", "images/amex.png");                      //The variable "amex" is given an src of "images/amex.png"
+          amex.setAttribute("width", "25%");                                //The variable "amex" is given a width of 25%
+          document.getElementById("credit-output").innerHTML = "";          //The function fetches for an HTML element with the ID "credit-output" and prints nothing into it
+          document.getElementById("credit-output").appendChild(amex);       //The function fetches for an HTML element with the ID "credit-output" and adds the variable "amex" into it
         }
-      } else if (current === 5 && previous > 0 && previous < 6) {
-        if (numDigits === 16) {
-          prev = document.getElementById("cc");
-          if (prev) {
-            prev.parentNode.removeChild(prev);
+      } else if (current === 5 && previous > 0 && previous < 6) {           //If the previous conditions were false, then this part of the if statement will run if the data type and value of "current" is equal to 5 and "previous" is between 0 and 6, exclusively
+        if (numDigits === 16) {                                             //Sets up an if statement. This part of the if statement will run if the data type and value of "numDigits" are equal to 16
+          prev = document.getElementById("cc");                             //If the condition is true, then the variable "prev" is assigned to the HTML element with the ID "cc"
+          if (prev) {                                                       //Sets up an if statement. This part of the if statement will run if "prev" is truthy
+            prev.parentNode.removeChild(prev);                              //If the conditon is true, then the specified HTML element is removed
           }
 
-          var mc = document.createElement("img");
-          mc.setAttribute("id", "cc");
-          mc.setAttribute("src", "images/mastercard.png");
-          mc.setAttribute("width", "25%");
-          document.getElementById("credit-output").innerHTML = "";
-          document.getElementById("credit-output").appendChild(mc);
+          var mc = document.createElement("img");                           //Defines global variable called "mc" and assigns it to the created <img> HTML element
+          mc.setAttribute("id", "cc");                                      //The variable "mc" is given an ID of "cc"
+          mc.setAttribute("src", "images/mastercard.png");                  //The variable "mc" is given an src of "images/mastercard.png"
+          mc.setAttribute("width", "25%");                                  //The variable "mc: is given a width of 25%
+          document.getElementById("credit-output").innerHTML = "";          //The function fetches for an HTML element with the ID "credit-output" and prints nothing into it
+          document.getElementById("credit-output").appendChild(mc);         //The function fetches for an HTML element with the ID "credit-output" and adds the variable "mc" into it
         }
       }
-    } else {
-      document.getElementById("credit-output").innerHTML = "Invalid.";
+    } else {                                                                //If the previous conditions were false, then this part of the if statement will run
+      document.getElementById("credit-output").innerHTML = "Invalid.";      //The function fetches for an HTML element with the ID "credit-output" and prints "Invalid." into it
     }
-  } else {
-    prev = document.getElementById("cc");
-    if (prev) {
-      prev.parentNode.removeChild(prev);
+  } else {                                                                  //If the previous condition was false, then this part of the if statement will run
+    prev = document.getElementById("cc");                                   //The variable "prev" is assigned to the HTML element with the ID of "cc"
+    if (prev) {                                                             //Sets up an if statement. This part of the if statement will run if "prev" is truthy
+      prev.parentNode.removeChild(prev);                                    //If the condition is true, then the specified HTML element is removed
     }
-    document.getElementById("credit-output").innerHTML = "";
+    document.getElementById("credit-output").innerHTML = "";                //The function fetches for an HTML element with the ID "credit-output" and prints nothing into it
   }
 
   check("credit", card);
