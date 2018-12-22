@@ -115,43 +115,43 @@ function credit() {                                   //Defines function called 
     let multiply = false;                             //Defines variable called "multiply" and assigns it to the value "false"
 
     while (number > 0) {                              //Sets up a while loop that starts to run and continues to run as long as "number" is greater than 0
-      digit = number % 10;                            //
-      numDigits++;
+      digit = number % 10;                            //Assigns "digit" to the remainder of the variable "number" divided by 10
+      numDigits++;                                    //The variable "numDigits" increases by 1
 
-      let tmp = current;
-      current = digit;
-      previous = tmp;
+      let tmp = current;                              //Defines variable called "tmp" and assigns it to the variable "current"
+      current = digit;                                //Assigns "current" to the value of "digit"
+      previous = tmp;                                 //Assigns "previous" to the variable "tmp"
 
-      if (multiply) {
-        var product = digit * 2;
-        var sum = 0;
+      if (multiply) {                                 //Sets up an if statement. This part of the if statement will run if "multiply" is true
+        var product = digit * 2;                      //Defines global variable called "product" and assigns it to the value of "digit" times 2
+        var sum = 0;                                  //Defines global variable called "sum" and assgins it to the value 0
 
-        while (product > 0) {
-          let temp = product % 10;
-          sum = sum + temp;
-          product = Math.floor(product / 10);
-        }
+        while (product > 0) {                        //Sets up a while loop that starts to run and continues to run as long as the variable "product" is greater than 0
+          let temp = product % 10;                   //Defines variable called "temp" and assigns it to the remainder of the variable "product" divided by 10
+          sum = sum + temp;                          //Assigns "sum" to the value of itself plus "temp"
+          product = Math.floor(product / 10);        //Assigns "product" to the value of itself divided by 10, rounded down to the nearest integer
+        }                                            //Here, the loop will loop back to the start and check its condition before running again
 
-        sumMultDigits = sumMultDigits + sum;
-      } else {
-        sumNonMultDigits = sumNonMultDigits + digit;
+        sumMultDigits = sumMultDigits + sum;         //Assigns "sumMultDigits" to the value of itself plus the variable "sum"
+      } else {                                       //This part of the if statement will run if the previous condition was not satisfied
+        sumNonMultDigits = sumNonMultDigits + digit; //Assigns "sumNonMultDigits" to the value of itself plus "digit"
       }
 
-      multiply = !multiply;
-      number = Math.floor(number / 10);
-    }
+      multiply = !multiply;                          //Assigns "multiply" to its boolean opposite
+      number = Math.floor(number / 10);              //Assigns "number" to the value of itself divided by 10, rounded down to the nearest integer
+    }                                                //Here, the loop will loop back to the start and check its condition before running again
 
-    let checksum = ((sumNonMultDigits + sumMultDigits) % 10);
-    if (checksum === 0) {
-      if (current === 4) {
-        if (numDigits === 13 || numDigits === 16) {
-          prev = document.getElementById("cc");
+    let checksum = ((sumNonMultDigits + sumMultDigits) % 10);               //Defines variable called "checkSum" and assigns it to the remainder of the quantity of the sum of the variables "sumNonMultDigits" and "sumMultDigits"
+    if (checksum === 0) {                                                   //Sets up an if statement. This part of the if statement will run if the data type and value of "checkSUm" is equal to 0
+      if (current === 4) {                                                  //Sets up an if statement. This part of the if statement will run if the data type and value of "current" is equal to 4
+        if (numDigits === 13 || numDigits === 16) {                         //Sets up an if statement. This part of the if statement will run if the data type and value of "sumDigits" is equal to 13 or 16
+          prev = document.getElementById("cc");                             
           if (prev) {
             prev.parentNode.removeChild(prev);
           }
 
-          let visa = document.createElement("img");
-          visa.setAttribute("id", "cc");
+          let visa = document.createElement("img");                         //Defines variable called "visa" and assigns it to a created <img> HTML element
+          visa.setAttribute("id", "cc");                                    //
           visa.setAttribute("src", "images/visa.png");
           visa.setAttribute("width", "25%");
           document.getElementById("credit-output").innerHTML = "";
@@ -204,37 +204,37 @@ function credit() {                                   //Defines function called 
  * SOLUTION. Guess.
  */
 
-function guess() {
-  let target = Number((Math.random() * 1001).toFixed(0));
-  let guess = -1;
-  let attempts = 0;
+function guess() {                                            //Defines function called "guess()"
+  let target = Number((Math.random() * 1001).toFixed(0));     //Defines variable called "target" and assigns it to a ramdomly generated integer between 1 and 1000 inclusively
+  let guess = -1;                                             //Defines variable called "guess" and assigns it to the value -1
+  let attempts = 0;                                           //Defines variable called "attempts" and assigns it to the value 0
 
-  while (guess !== target) {
-    guess = Number(prompt("Guess: "));
+  while (guess !== target) {                                  //Sets up while loop that starts running and continues to run as long as the data type or value of "guess" is not equal to "target"
+    guess = Number(prompt("Guess: "));                        //Assigns the varaible "guess" to the value of the user input from the prompt that says "Guess: ". The user input is converted into a number
 
-    if (guess === null) {
-      break;
-    } else if (Number.isNan(guess)) {
-      guess = -1;
-    } else if (!Number.isInteger(guess)) {
-      guess = -1;
+    if (guess === null) {                                     //Sets up if statement. This part of the if statement runs if the dta type and value of "guess" is equal to null
+      break;                                                  //If the condition is true, the function will exit the while loop and continue down the code
+    } else if (Number.isNan(guess)) {                         //If the previous condition was false, then this part of the if statement will run if "guess" is not a number
+      guess = -1;                                             //If the condition is true, then "guess" is assigned the value -1
+    } else if (!Number.isInteger(guess)) {                    //If the previous conditions were not true, then this part of the if statement will run if "guess" is not an integer
+      guess = -1;                                             //If the condition is true, then "guess" is assigned the value -1
     }
 
-    if (guess > 0 && guess < 1001) {
-      attempts++;
+    if (guess > 0 && guess < 1001) {                          //Sets up if statement. This part of the if statement will run if "guess" is between 0 and 1001, exclusively
+      attempts++;                                             //If the condition is true, then "attempts" will increase by 1
 
-      if (guess < target) {
-        alert("Try something a little larger...");
-      } else if (guess > target) {
-        alert("Try something a little smaller...");
+      if (guess < target) {                                   //Sets up if statement. This part of the if statement will run if "guess" is below "target"
+        alert("Try something a little larger...");            //If the condition is true, then an alert will show that says "Try something a little larger..."
+      } else if (guess > target) {                            //If the previous condition was not true, then this part of the if statement will tun if "guess" is greater than "target"
+        alert("Try something a little smaller...");           //If the condition is true, then an alert will show that says "Try something a little smaller..."
       }
     }
-  }
+  }                                                           //Here, the while loop loops back to the start and checks its condition before running again
 
-  if (guess !== null) {
-    document.getElementById("guess-output").innerHTML = "Random Number: " + target + "<br>Attempts: " + attempts;
-  } else {
-    document.getElementById("guess-output").innerHTML = "";
+  if (guess !== null) {                                                                                               //Sets up an if statement. This part of the if statement will run if the data type or value of "guess" is not equal to null
+    document.getElementById("guess-output").innerHTML = "Random Number: " + target + "<br>Attempts: " + attempts;     //If the condition is true, the function will search for an HTML element with the ID "guess-output" and print "Random Number: " + target + "<br>Attempts: " + attempts into the HTML element
+  } else {                                                                                                            //If the previous condition was false, then this part of the if statement will run
+    document.getElementById("guess-output").innerHTML = "";                                                           //The function will search for an HTML element with the ID "guess-output" and print nothing into the HTML element
   }
 
   check("guess");
@@ -244,45 +244,45 @@ function guess() {
  * SOLUTION. Hurricane.
  */
 
-function hurricane() {
-  const CAT5 = 156;
-  const CAT4 = 129;
-  const CAT3 = 110;
-  const CAT2 = 95;
-  const CAT1 = 73;
-  const TROP = 38;
+function hurricane() {                                //Defines function called "hurricane()"
+  const CAT5 = 156;                                   //Defines constant called "CAT5" and assigns it to the value 156
+  const CAT4 = 129;                                   //Defines constant called "CAT4" and assigns it to the value 129
+  const CAT3 = 110;                                   //Defines constant called "CAT3" and assigns it to the value 110
+  const CAT2 = 95;                                    //Defines constant called "CAT2" and assigns it to the value 95
+  const CAT1 = 73;                                    //Defines constant called "CAT1" and assigns it to the value 73 
+  const TROP = 38;                                    //Defines constant called "TROP" and assgins it to the value 38
 
-  let windspeed = -1;
-  while (windspeed < 0) {
-    windspeed = Number(prompt("Windspeed: "));
+  let windspeed = -1;                                 //Defines varaible called "windspeed" and assigns it to the value -1
+  while (windspeed < 0) {                             //Sets up a while loop that will start running and contninue to run as long as "windspeed" is less than 0
+    windspeed = Number(prompt("Windspeed: "));        //Assigns "windspeed" to the value of the user input from the prompt that says "Windspeed: ". The user input is converted into a number
 
-    if (windspeed === null) {
-      break;
-    } else if (Number.isNaN(windspeed)) {
-      windspeed = -1;
-    } else if (!Number.isInteger(windspeed)) {
-      windspeed = -1;
+    if (windspeed === null) {                         //Sets up if statement. THis part of the if statement will run if the data type and value of "windspeed" are equal to null
+      break;                                          //If the condition is true, then the function will exit the while loop and continue down the code
+    } else if (Number.isNaN(windspeed)) {             //If the previous condition was not true, then this part of the if statement will run if "windspeed" is not a number
+      windspeed = -1;                                 //If the condition is true, then "windspeed" is assigned to the value -1
+    } else if (!Number.isInteger(windspeed)) {        //If the previous conditions were not true, then this part of the if statement will run if "windspeed" is not an integer
+      windspeed = -1;                                 //If the condition is true, then "windspeed" is assigned to the value -1
     }
-  }
+  }                                                   //Here, the while loop loops back to the start and checks it condition before running again
 
-  if (windspeed !== null) {
-    if (windspeed > CAT5) {
-      document.getElementById("hurricane-output").innerHTML = "Category 5 Hurricane.";
-    } else if (windspeed > CAT4) {
-      document.getElementById("hurricane-output").innerHTML = "Category 4 Hurricane.";
-    } else if (windspeed > CAT3) {
-      document.getElementById("hurricane-output").innerHTML = "Category 3 Hurricane.";
-    } else if (windspeed > CAT2) {
-      document.getElementById("hurricane-output").innerHTML = "Category 2 Hurricane.";
-    } else if (windspeed > CAT1) {
-      document.getElementById("hurricane-output").innerHTML = "Category 1 Hurricane.";
-    } else if (windspeed > TROP) {
-      document.getElementById("hurricane-output").innerHTML = "Tropical Storm.";
-    } else {
-      document.getElementById("hurricane-output").innerHTML = "The skies are calm...";
+  if (windspeed !== null) {                                                             //Sets up if statement. This part of the if statement will run if the data type or value of "windspeed" does not equal null
+    if (windspeed > CAT5) {                                                             //Sets up if statement. This part of the if statement will run if "windspeed" is greater than "CAT5"
+      document.getElementById("hurricane-output").innerHTML = "Category 5 Hurricane.";  //If the condition is true, then the function fetches for an HTML element with the ID "hurricane-output" and prints "Category 5 Hurricane." into it
+    } else if (windspeed > CAT4) {                                                      //If the previous condition was false, then this part of the if statement will run if "windspeed" is greater than "CAT4"
+      document.getElementById("hurricane-output").innerHTML = "Category 4 Hurricane.";  //If the condition is true, then the function fetches for an HTML element with the ID "hurricane-output" and prints "Category 4 Hurricane." into it
+    } else if (windspeed > CAT3) {                                                      //If the previous conditions were false, then this part of the if Statement will run if "windspeed" is greater than "CAT3"
+      document.getElementById("hurricane-output").innerHTML = "Category 3 Hurricane.";  //If the condition is true, then the function fetches for an HTML element with the ID "hurricane-output" and prints "Category 3 Hurricane." into it
+    } else if (windspeed > CAT2) {                                                      //If the previous conditions were false, then this part of the if statement will run if "windspeed" is greater than "CAT2"
+      document.getElementById("hurricane-output").innerHTML = "Category 2 Hurricane.";  //If the condition is true, then the function fetches for an HTML element with the ID "hurricane-output" and prints "Category 2 Hurricane." into it
+    } else if (windspeed > CAT1) {                                                      //If the previous conditions were false, then this part of the if statement will run if "windspeed" is greater than "CAT1"
+      document.getElementById("hurricane-output").innerHTML = "Category 1 Hurricane.";  //If the condition is true, then the function fetches for an HTML element with the ID "hurricane-output" and prints "Category 1 Hurricane." into it
+    } else if (windspeed > TROP) {                                                      //If the preious conditions were false, then this part of the if statement will run if "windspeed" is greater than "TROP"
+      document.getElementById("hurricane-output").innerHTML = "Tropical Storm.";        //If the condition is true, then the function fetches for an HTML element will the ID "hurricane-output" and prints "Tropical Storm." into it
+    } else {                                                                            //If the previous conditions were false, then this part of the if statement runs
+      document.getElementById("hurricane-output").innerHTML = "The skies are calm...";  //The function fetches for an HTML element with the ID "hurrican-output" and prints "The skies are calm..." into it
     }
-  } else {
-    document.getElementById("hurricane-output").innerHTML = "";
+  } else {                                                                              //If the previous condition was false, then this part of the is statement runs
+    document.getElementById("hurricane-output").innerHTML = "";                         //The function fetches for an HTML element with the ID "hurricane-output" and prints nothing into it
   }
 
   check("hurricane", windspeed);
@@ -292,47 +292,47 @@ function hurricane() {
  * SOLUTION. Gymnastics.
  */
 
-function gymnastics() {
-  let total = 0;
-  let scores = [];
-  let valid = 0;
-  let max = -1;
-  let min = 11;
-  let score = -1;
+function gymnastics() {                     //Defines function called "gymnastics()"
+  let total = 0;                            //Defines variable called "total" and assigns it to the value 0
+  let scores = [];                          //Defines list called "scores" and assigns it to the value of nothing
+  let valid = 0;                            //Defines variable called "valid" and assigns it to the value 0
+  let max = -1;                             //Defines variable called "max" and assigns it to the value -1
+  let min = 11;                             //Defines variable called "min" and assigns it to the value 11
+  let score = -1;                           //Defines variable called "score" and assigns it to the value -1
 
-  while (valid < 6) {
-    score = Number(prompt("Score: "));
+  while (valid < 6) {                       //Sets up a while loop that starts running and continues to run as long as "valid" is less than 6
+    score = Number(prompt("Score: "));      //Assigns "score" to the value of the user input from the prompt that says "Score: ". The user input is converted into a number
 
-    if (score === null) {
-      break;
-    } else if (Number.isNaN(score)) {
-      score = -1;
+    if (score === null) {                   //Sets up if statement. This part of the is statement will run if the data type and value of "score" are equal to null
+      break;                                //If the condition is true, then the function exits the while loop and continues down the code
+    } else if (Number.isNaN(score)) {       //If the previous condition was false, then this part of the if statement will run if "score" is not a number
+      score = -1;                           //If the condition is true, then "score" is assigned to the value -1
     }
 
-    if (score >= 0 && score <= 10) {
-      valid++;
-      scores.push(score);
+    if (score >= 0 && score <= 10) {        //Sets up if statement. THis part of the if statement will run if "score" is between 0 and 10, inclusively
+      valid++;                              //If the conditions are true, then "valid" will increase by 1
+      scores.push(score);                   //The variable "score" will be added to the end of the list "scores"
 
-      if (score < min) {
-        min = score;
+      if (score < min) {                    //Sets up if statement. This part of the if statement will run if "score" is less than "min"
+        min = score;                        //If the condition is true, then "min" is assigned to the value of "score"
       }
-      if (score > max) {
-        max = score;
+      if (score > max) {                    //Sets up if statement. This part of the is statement will run if "score is greater than "max"
+        max = score;                        //If the condition is true, then "max" is assigned to the value of "score"
       }
-      total = total + score;
+      total = total + score;                //The variable "total" is assigned to itslef plus the variable "score"
     }
-  }
+  }                                         //Here, the while loop loops back to the start and checks its condition before running again
 
-  if (score !== null) {
-    let sum = total;
-    sum = sum - min - max;
-    let average = (sum / 4.0).toFixed(2);
+  if (score !== null) {                                                 //Sets up if statement. This part of the is statement will run if the data type of value of "score" is not equal to null
+    let sum = total;                                                    //If the condition is true, then the function defines a variable called "sum" and assigns it to the value of "total"
+    sum = sum - min - max;                                              //The variable "sum" is assigned to the value of "sum" - "min" - "max"
+    let average = (sum / 4.0).toFixed(2);                               //Defines variable called "average" and assigns it to the value of "sum" divided by 4.0, rounded to two deciaml places
 
-    let result = `Discarded: ${min}, ${max}<br>Score: ${average}`;
-    document.getElementById("gymnastics-output").innerHTML = result;
-  } else {
-    scores = null;
-    document.getElementById("gymnastics-output").innerHTML = "";
+    let result = `Discarded: ${min}, ${max}<br>Score: ${average}`;      //Defines variable called "result" and assigns it to the value `Discarded: ${min}, ${max}<br>Score: ${average}`
+    document.getElementById("gymnastics-output").innerHTML = result;    //The function fetches for an HTML element with the ID "gymnastics-output" and prints the variable "result" into it
+  } else {                                                              //If the previous condition was false, then this part of the if statement runs
+    scores = null;                                                      //The list "scores" is assigned to the value null
+    document.getElementById("gymnastics-output").innerHTML = "";        //The function fetches for an HTML element with the ID "gymnastics-output" and prints nothing into it
   }
 
   check("gymnastics", scores);
@@ -342,77 +342,77 @@ function gymnastics() {
  * SOLUTION. Report Card.
  */
 
-function reportCard() {
-  let testTotal = 0;
-  let quizTotal = 0;
-  let homeworkTotal = 0;
-  let tests = 0;
-  let quizzes = 0;
-  let homeworks = 0;
+function reportCard() {       //Defines function called "reportCard()"
+  let testTotal = 0;          //Defines variable called "testTotal" and assigns it to the value 0
+  let quizTotal = 0;          //Defines variable called "quizTotal" and assigns it to the value 0
+  let homeworkTotal = 0;      //Defines variable called "homeworkTotal" and assigns it to the value 0
+  let tests = 0;              //Defines variable called "tests" and assigns it to the value 0
+  let quizzes = 0;            //Defines vaariable called "quizzes" and assigns it to the value 0
+  let homeworks = 0;          //Defines variable called "homeworks" and assigns it ot the value 0
 
-  let testScore = -2;
-  while (testScore !== -1) {
-    testScore = Number(prompt("Test: "));
+  let testScore = -2;                                     //Defines variable called "testScore" and assigns it to the value -2
+  while (testScore !== -1) {                              //Sets up a while loop that starts running and continues to run as long as the data ype or value of "testScore" is not equal to -1
+    testScore = Number(prompt("Test: "));                 //The variable "testScore" is assigned to the value of the user input from the prompt that says "Test: ". The user input is converted into a number
 
-    if (testScore === null) {
-      break;
-    } else if (Number.isNaN(testScore)) {
-      testScore = -2;
-    } else if (testScore === -1) {
-       break;
-    } else if (testScore >= 0 && testScore <= 100) {
-      tests++;
-      testTotal = testTotal + testScore;
+    if (testScore === null) {                             //Sets up if statement. THis part of the if statement will run if the data type and value of "testScore" is equal to null
+      break;                                              //If the condition is true, then the function will exit the while loop and continue down the code
+    } else if (Number.isNaN(testScore)) {                 //If the previous condition was false, then this part of the if statement will run if "testScore" is not a number
+      testScore = -2;                                     //If the condition is true, then "testScore" is assigned a value of -2
+    } else if (testScore === -1) {                        //If the previous conditions were false, then this part of the if statement will run if the data type and value of "testScore" are equal to -1
+       break;                                             //If the condition is true, then the function eill exit the while loop and continue down the code
+    } else if (testScore >= 0 && testScore <= 100) {      //If the previous conditions were false, then this part of the if statement will run if "testScore" is between 0 and 100, inclusively
+      tests++;                                            //If the condition is true, then "tests" will increase by 1
+      testTotal = testTotal + testScore;                  //The variable "testTotal" is assigned to itself plus "testScore"
     }
-  }
+  }                                                       //Here, the while loop loops back to the start and checks its condition before running again
 
-  let quizScore = -2;
-  while (quizScore !== -1) {
-    quizScore = Number(prompt("Quiz: "));
+  let quizScore = -2;                                     //Defines variable called "quizScore" and assigns it to the value -2
+  while (quizScore !== -1) {                              //Sets up a while loop that starts running and continues to run as long as the data type or value of "quizScore" is not equal to -1
+    quizScore = Number(prompt("Quiz: "));                 //The variable "quizScore" is assigned to the value of the user input from the prompt that says "Quiz: ". THe user input is converted into a number
 
-    if (quizScore === null) {
-      break;
-    } else if (Number.isNaN(quizScore)) {
-      quizScore = -2;
-    } else if (quizScore === -1) {
-       break;
-    } else if (quizScore >= 0 && quizScore <= 100) {
-      quizzes++;
-      quizTotal = quizTotal + quizScore;
+    if (quizScore === null) {                             //Sets up if statement. This part of the if statement will run if the data type and value of "quizScore" are equal to null
+      break;                                              //If the condition is true, then the function will exit the while loop and continue down the code
+    } else if (Number.isNaN(quizScore)) {                 //If the previous condition was false, then this part of the if statement will run if "quizScore" is not a number
+      quizScore = -2;                                     //If the condition is true, then "quizScore" is assigned to the value -2
+    } else if (quizScore === -1) {                        //If the previous conditions were false, then this part of the if statement will run if the data type and value of "quizScore" are equal to -1
+       break;                                             //If the condition is ture, then the function will exit the while loop and continue down the code
+    } else if (quizScore >= 0 && quizScore <= 100) {      //If the previous conditions were false, then this part of the if statement will run if "quizScore" is between 0 and 100, inclusively
+      quizzes++;                                          //If the condition is true, then "quizzes" will increase by 1
+      quizTotal = quizTotal + quizScore;                  //The variable "quizTotal" is assigned to the value of itself plus "quizScore"
     }
-  }
+  }                                                       //Here, the while loop loops back to the start and checks its condition before running again
 
-  let homeworkScore = -2;
-  while (homeworkScore !== -1) {
-    homeworkScore = Number(prompt("Homework: "));
+  let homeworkScore = -2;                                 //Defines variable called "homeworkScore" and assigns it to the value -2
+  while (homeworkScore !== -1) {                          //Sets up a while loop that starts running and continues to run as long as the data type or value of "homeworkScore" is not equal to -1
+    homeworkScore = Number(prompt("Homework: "));         //The variable "homeworkScore" is assigned to the value of the user input from the prompt that says "Homework: ". The user input is converted into a number
 
-    if (homeworkScore === null) {
-      break;
-    } else if (Number.isNaN(homeworkScore)) {
-      homeworkScore = -2;
-    } else if (homeworkScore === -1) {
-       break;
-    } else if (homeworkScore >= 0 && homeworkScore <= 100) {
-      homeworks++;
-      homeworkTotal = homeworkTotal + homeworkScore;
+    if (homeworkScore === null) {                               //Sets up is statement. This part of the if statement will run if the data type and value of "homeworkScore" are equal to null
+      break;                                                    //If the condition is true, then the function will exit the while loop and continue down the code
+    } else if (Number.isNaN(homeworkScore)) {                   //If the previous condition was false, then this part of the if statement will run if "homeworkScore" is not a number
+      homeworkScore = -2;                                       //If the condition is true, then "homeworkScore" is assgined to the value -2
+    } else if (homeworkScore === -1) {                          //If the previous conditions were false, then this part of the if statement will run if the data type and value of "homeworkScore" are equal to -1
+       break;                                                   //If the condition is true, then the function will exit the while loop and continue down the code
+    } else if (homeworkScore >= 0 && homeworkScore <= 100) {    //If the previous conditions were false, then this part of the if statement will run if "homeworkScore" is between 0 and 100, inclusively
+      homeworks++;                                              //If the condition is true, then "homeworks" increases by 1
+      homeworkTotal = homeworkTotal + homeworkScore;            //The variable "homeworksTotal" is equa lto itself plus "homeworkScore"
     }
-  }
+  }                                                             //Here, the while loop loops back to the start and check its condition before running again
 
-  let testAverage = null;
-  let quizAverage = null;
-  let homeworkAverage = null;
-  let average = null;
+  let testAverage = null;         //Defines variable called "testAverage" and assigns it to the value null
+  let quizAverage = null;         //Defines variable called "quizAverage" and assigns it to the value null
+  let homeworkAverage = null;     //Defines variable called homeworkAverage" and assigns it to the value null
+  let average = null;             //Defines variable called "average: and assigns it othe value null
 
-  if (testScore === null || quizScore === null || homeworkScore === null) {
-    document.getElementById("report-card-output").innerHTML = "";
-  } else {
-    testAverage = (testTotal / tests).toFixed(2);
-    quizAverage = (quizTotal / quizzes).toFixed(2);
-    homeworkAverage = (homeworkTotal / homeworks).toFixed(2);
-    average = (testAverage * 0.6 + quizAverage * 0.3 + homeworkAverage * 0.1).toFixed(2);
+  if (testScore === null || quizScore === null || homeworkScore === null) {                                                     //Sets up if statement. This part of the if statement will run if the data tpe and value of "testScore", "quizScore", or "homeworkScore" are equal to null
+    document.getElementById("report-card-output").innerHTML = "";                                                               //If the condition is true, then the function fetches an HTML element with the ID "report-card-output" and print nothing into it
+  } else {                                                                                                                      //If the previous condition was false, then this part of the if statement runs
+    testAverage = (testTotal / tests).toFixed(2);                                                                               //The variable "testAverage" is assigned to "testTotal" divided by "tests", rounded to two decimal places
+    quizAverage = (quizTotal / quizzes).toFixed(2);                                                                             //The variable "quizAverage" is assigned to "quizTotal" divided by "quizzes", rounded to two decimal places
+    homeworkAverage = (homeworkTotal / homeworks).toFixed(2);                                                                   //The variable "homeworkAverage" is assigned to "homeworkTotal" divided by "homeworks", rounded to two decimal places
+    average = (testAverage * 0.6 + quizAverage * 0.3 + homeworkAverage * 0.1).toFixed(2);                                       //The variable "average" is equal to the value of "testAverage" times 0.6 plus "quizAverage" times 0.3 plus "homeworkAverage" times 0.1, rounded to two decimal places
 
-    let result = `Tests: ${testAverage}<br>Quizzes: ${quizAverage}<br>Homework: ${homeworkAverage}<br>Grade: ${average}`;
-    document.getElementById("report-card-output").innerHTML = result;
+    let result = `Tests: ${testAverage}<br>Quizzes: ${quizAverage}<br>Homework: ${homeworkAverage}<br>Grade: ${average}`;       //The variable result is assigned to the value `Tests: ${testAverage}<br>Quizzes: ${quizAverage}<br>Homework: ${homeworkAverage}<br>Grade: ${average}`
+    document.getElementById("report-card-output").innerHTML = result;                                                           //THe function fetches for an HTML element with the ID "report-card-output" and prints the variable "result" into it
   }
 
   check("report-card", testTotal, tests, quizTotal, quizzes, homeworkTotal, homeworks);
